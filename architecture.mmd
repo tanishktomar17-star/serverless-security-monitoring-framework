@@ -1,0 +1,9 @@
+flowchart TD
+ A[Serverless event sources<br/>CloudWatch / CloudTrail / API events] --> B[Ingestion adapter]
+ B --> C[Canonical event normalization]
+ C --> D[Rule-based detection engine]
+ D --> E[Risk score and severity]
+ E --> F[(Event store)]
+ E --> G[Alerts and analyst dashboard]
+ H[Local synthetic event generator] --> B
+ style H stroke-dasharray: 5 5

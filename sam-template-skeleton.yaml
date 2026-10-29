@@ -1,0 +1,23 @@
+# Starter skeleton only; review policies/resources before deployment.
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: SSMF Phase III starter Lambda adapter
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 10
+    MemorySize: 256
+Resources:
+  SsmfProcessor:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: ssmf.lambda_handler.handler
+      Description: Normalizes and evaluates an incoming security event
+      Policies: [] # Add only least-privilege permissions actually required.
+      Events:
+        DemoApi:
+          Type: Api
+          Properties:
+            Path: /event
+            Method: post
